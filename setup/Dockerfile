@@ -43,8 +43,6 @@ RUN echo "SSLCertificateFile /home/spid-php/cert/spid-sp.crt" >> /etc/apache2/ap
 RUN echo "SSLCertificateKeyFile /home/spid-php/cert/spid-sp.pem" >> /etc/apache2/apache2.conf
 
 # Apache conf - SAML endpoint
-RUN echo "Redirect '/acs' '/spid/module.php/saml/sp/saml2-acs.php/service'" >> /etc/apache2/apache2.conf
-RUN echo "Redirect '/slo' '/spid/module.php/saml/sp/saml2-logout.php/service'" >> /etc/apache2/apache2.conf
 RUN echo "Redirect '/metadata.xml' '/spid/module.php/saml/sp/metadata.php/service'" >> /etc/apache2/apache2.conf
 
 # Apache custom log

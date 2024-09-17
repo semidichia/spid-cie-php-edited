@@ -35,7 +35,7 @@ $slosvcdefault = [
 ];
 
 $slob = $spconfig->getArray('SingleLogoutServiceBinding', $slosvcdefault);
-$slol = \SimpleSAML\Module::getModuleURL('saml/sp/saml2-logout.php/' . $sourceId);
+$slol = 'https://localhost/slo.php';
 
 foreach ($slob as $binding) {
     if ($binding == \SAML2\Constants::BINDING_SOAP && !($store instanceof \SimpleSAML\Store\SQL)) {
@@ -69,7 +69,7 @@ foreach ($assertionsconsumerservices as $services) {
     switch ($services) {
         case 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST':
             $acsArray['Binding'] = \SAML2\Constants::BINDING_HTTP_POST;
-            $acsArray['Location'] = \SimpleSAML\Module::getModuleURL('saml/sp/saml2-acs.php/' . $sourceId);
+            $acsArray['Location'] = 'https://localhost/acs.php';
             if (!in_array(\SAML2\Constants::NS_SAMLP, $supported_protocols, true)) {
                 $supported_protocols[] = \SAML2\Constants::NS_SAMLP;
             }
@@ -83,7 +83,7 @@ foreach ($assertionsconsumerservices as $services) {
             break;
         case 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact':
             $acsArray['Binding'] = 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact';
-            $acsArray['Location'] = \SimpleSAML\Module::getModuleURL('saml/sp/saml2-acs.php/' . $sourceId);
+            $acsArray['Location'] = 'https://localhost/acs.php';
             if (!in_array(\SAML2\Constants::NS_SAMLP, $supported_protocols, true)) {
                 $supported_protocols[] = \SAML2\Constants::NS_SAMLP;
             }
@@ -99,7 +99,7 @@ foreach ($assertionsconsumerservices as $services) {
             break;
         case 'urn:oasis:names:tc:SAML:2.0:profiles:holder-of-key:SSO:browser':
             $acsArray['Binding'] = 'urn:oasis:names:tc:SAML:2.0:profiles:holder-of-key:SSO:browser';
-            $acsArray['Location'] = \SimpleSAML\Module::getModuleURL('saml/sp/saml2-acs.php/' . $sourceId);
+            $acsArray['Location'] = 'https://localhost/acs.php';
             $acsArray['hoksso:ProtocolBinding'] = \SAML2\Constants::BINDING_HTTP_REDIRECT;
             if (!in_array(\SAML2\Constants::NS_SAMLP, $supported_protocols, true)) {
                 $supported_protocols[] = \SAML2\Constants::NS_SAMLP;

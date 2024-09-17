@@ -368,7 +368,7 @@ class SP extends \SimpleSAML\Auth\Source
                 case Constants::BINDING_HTTP_POST:
                     $acs = [
                         'Binding' => Constants::BINDING_HTTP_POST,
-                        'Location' => Module::getModuleURL('saml/sp/saml2-acs.php/' . $this->getAuthId()),
+                        'Location' => 'https://localhost/acs.php',
                     ];
                     if (!in_array(Constants::NS_SAMLP, $this->protocols, true)) {
                         $this->protocols[] = Constants::NS_SAMLP;
@@ -386,7 +386,7 @@ class SP extends \SimpleSAML\Auth\Source
                 case Constants::BINDING_HTTP_ARTIFACT:
                     $acs = [
                         'Binding' => Constants::BINDING_HTTP_ARTIFACT,
-                        'Location' => Module::getModuleURL('saml/sp/saml2-acs.php/' . $this->getAuthId()),
+                        'Location' => 'https://localhost/acs.php',
                     ];
                     if (!in_array(Constants::NS_SAMLP, $this->protocols, true)) {
                         $this->protocols[] = Constants::NS_SAMLP;
@@ -406,7 +406,7 @@ class SP extends \SimpleSAML\Auth\Source
                 case Constants::BINDING_HOK_SSO:
                     $acs = [
                         'Binding' => Constants::BINDING_HOK_SSO,
-                        'Location' => Module::getModuleURL('saml/sp/saml2-acs.php/' . $this->getAuthId()),
+                        'Location' => 'https://localhost/acs.php',
                         'hoksso:ProtocolBinding' => Constants::BINDING_HTTP_REDIRECT,
                     ];
                     if (!in_array(Constants::NS_SAMLP, $this->protocols, true)) {
@@ -440,7 +440,7 @@ class SP extends \SimpleSAML\Auth\Source
                 Constants::BINDING_SOAP,
             ]
         );
-        $location = Module::getModuleURL('saml/sp/saml2-logout.php/' . $this->getAuthId());
+        $location = 'https://localhost/slo.php';
 
         $endpoints = [];
         foreach ($bindings as $binding) {
@@ -514,7 +514,7 @@ class SP extends \SimpleSAML\Auth\Source
 
         $ar = Module\saml\Message::buildAuthnRequest($this->metadata, $idpMetadata);
 
-        $ar->setAssertionConsumerServiceURL(Module::getModuleURL('saml/sp/saml2-acs.php/' . $this->authId));
+        $ar->setAssertionConsumerServiceURL('https://localhost/acs.php');
 
         if (isset($state['\SimpleSAML\Auth\Source.ReturnURL'])) {
             $ar->setRelayState($state['\SimpleSAML\Auth\Source.ReturnURL']);

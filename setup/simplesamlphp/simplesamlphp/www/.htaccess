@@ -1,6 +1,6 @@
 SetEnvIfNoCase Request_URI "module.php/saml/sp/metadata.php/service" metadata
-SetEnvIfNoCase Request_URI "module.php/saml/sp/saml2-acs.php/service" login
-SetEnvIfNoCase Request_URI "module.php/saml/sp/saml2-logout.php/service" logout
+#SetEnvIfNoCase Request_URI "module.php/saml/sp/saml2-acs.php/service" login
+#SetEnvIfNoCase Request_URI "module.php/saml/sp/saml2-logout.php/service" logout
 
 Order Deny,Allow
 Deny from All
